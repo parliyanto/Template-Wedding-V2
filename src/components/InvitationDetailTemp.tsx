@@ -187,7 +187,7 @@ export default function InvitationDetail() {
 
         {/* Section 3: Bride & Groom */}
         <section
-          className="relative w-full min-h-screen flex items-center justify-center bg-center bg-no-repeat bg-cover bg-fixed md:bg-fixed sm:bg-scroll"
+          className="relative w-full min-h-screen flex items-center justify-center bg-center bg-no-repeat bg-cover bg-fixed md:bg-fixed sm:bg-fixed"
           style={{
             backgroundImage: "url('/Asset_background.webp')",
             // backgroundSize: "contain",
