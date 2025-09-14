@@ -185,744 +185,367 @@ export default function InvitationDetail() {
                 />
         </section>
 
-        {/* Section 3: Bride & Groom */}
-        <section
-          className="relative w-full min-h-screen flex items-center justify-center bg-center bg-no-repeat bg-cover bg-fixed md:bg-fixed sm:bg-fixed"
-          style={{
-            backgroundImage: "url('/Asset_background.webp')",
-            // backgroundSize: "contain",
-            // backgroundRepeat: "no-repeat",
-          }}
-        >
-          {/* Overlay tipis */}
-          <div className="absolute"></div>
+       {/* === Section 3: Bride & Groom === */}
+<section className="relative w-full min-h-screen flex items-center justify-center overflow-hidden">
+  {/* BG Fixed Layer */}
+  <div
+    className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10"
+    style={{ backgroundImage: "url('/Asset_background.webp')" }}
+  ></div>
+  {/* Overlay tipis */}
+  <div className="absolute inset-0 bg-white/40 -z-10"></div>
 
-          {/* 🦋 GIF kupu-kupu */}
-          <img
-            src="/Butterfly.gif"
-            alt="butterfly"
-            className="absolute top-10 left-12 w-16 h-16 animate-bounce"
-          />
+  {/* Konten */}
+  <motion.div
+    className="relative z-10 w-full max-w-md"
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
+    viewport={{ once: true }}
+  >
+    <div className="relative bg-transparent rounded-[150px] shadow-xl overflow-hidden mt-20">
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-20"
+        style={{ backgroundImage: "url('/ASSET-ARCHITECTURE-5.webp')" }}
+      ></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-white/70 to-white/90"></div>
 
-            <img
-            src="/Butterfly_fly.gif"
-            alt="butterfly"
-            className="absolute bottom-20 right-16 w-20 h-20 animate-bounce delay-500"
-          />
+      <div className="relative z-10 flex flex-col items-center text-center px-6 py-10">
+        <h2 className="text-3xl md:text-4xl font-serif italic text-gray-800 mb-2">
+          Bride & Groom
+        </h2>
+        <p className="text-gray-700 text-sm mb-6">
+          The pleasure of your company is requested at the marriage of:
+        </p>
 
-          <motion.div 
-          className="relative z-10 w-full max-w-md"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-          viewport={{ once: true }}
-          >
-            {/* Card dengan arch top */}
-            <div className="relative bg-transparent rounded-[150px] shadow-xl overflow-hidden mt-20">
-              {/* Background arsitektur tipis */}
-              <div
-                className="absolute inset-0 bg-cover bg-center opacity-20"
-                style={{ backgroundImage: "url('/ASSET-ARCHITECTURE-5.webp')" }}
-              ></div>
-              <div className="absolute inset-0 bg-gradient-to-b from-white/70 to-white/90"></div>
+        {/* Groom */}
+        <div className="relative w-64 h-80 mx-auto overflow-hidden rounded-[50%] border border-gray-400 shadow-lg">
+          <img src="/pria.jpg" alt="Groom" className="w-full h-full object-cover" />
+        </div>
+        <h3 className="mt-6 text-2xl font-serif italic text-gray-800">[Nama Mempelai Pria]</h3>
+        <p className="text-gray-700 text-lg">[Nama Lengkap]</p>
+        <p className="text-gray-600 text-sm mt-2">[Nama Ayah] <br /> & [Nama Ibu]</p>
+        <a href="https://instagram.com/" target="_blank" className="mt-4 mb-2 text-pink-600 hover:text-pink-800">
+          <FaInstagram size={28} />
+        </a>
 
-              {/* Konten */}
-              <div className="relative z-10 flex flex-col items-center text-center px-6 py-10">
-                {/* Judul */} <h2 className="text-3xl md:text-4xl font-serif italic text-gray-800 mb-2"> Bride & Groom </h2> <p className="text-gray-700 text-sm mb-6"> The pleasure of your company is requested at the marriage of: </p>
-                {/* Foto Pria */}
-                <div className="relative w-64 h-80 mx-auto overflow-hidden rounded-[50%] border border-gray-400 shadow-lg">
-                  <img
-                    src="/pria.jpg"
-                    alt="Groom"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+        {/* Simbol & */}
+        <h2 className="text-5xl font-serif italic text-gray-800 my-6">&</h2>
 
-                {/* Nama Pria */}
-                <h3 className="mt-6 text-2xl font-serif italic text-gray-800">
-                  [Nama Mempelai Pria]
-                </h3>
-                <p className="text-gray-700 text-lg">[Nama Lengkap]</p>
-                <p className="text-gray-600 text-sm mt-2">
-                  [Nama Ayah] <br /> & [Nama Ibu]
-                </p>
-
-                {/* Instagram Icon */}
-                    <a
-                      href="https://instagram.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 mb-2 text-pink-600 hover:text-pink-800"
-                    >
-                      <FaInstagram size={28} />
-                    </a>
-
-                {/* Simbol & */}
-                <h2 className="text-5xl font-serif italic text-gray-800 my-6">&</h2>
-
-                {/* Foto Wanita */}
-                <div className="relative w-64 h-80 mx-auto overflow-hidden rounded-[50%] border border-gray-400 shadow-lg mt-10">
-                  <img
-                    src="/wanita.jpg"
-                    alt="Bride"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                {/* Nama Wanita */}
-                <h3 className="mt-6 text-2xl font-serif italic text-gray-800">
-                  [Nama Mempelai Wanita]
-                </h3>
-                <p className="text-gray-700 text-lg">[Nama Lengkap]</p>
-                <p className="text-gray-600 text-sm mt-2">
-                  [Nama Ayah] <br /> & [Nama Ibu]
-                </p>
-                {/* Instagram Icon */}
-                    <a
-                      href="https://instagram.com/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 mb-2 text-pink-600 hover:text-pink-800"
-                    >
-                      <FaInstagram size={28} />
-                    </a>
-              </div>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* Section 4: Foto Pasangan dengan Ornamen */}
-        <section
-                  className="relative flex items-center justify-center bg-fixed bg-center px-4"
-                  style={{
-                    backgroundImage: "url('/Asset_background.webp')",
-                    backgroundSize: "contain",
-                  }}
-                >
-          {/* Overlay tipis supaya foto lebih jelas */}
-          <div className="absolute inset-0 bg-white/30"></div>
-
-          <motion.div 
-          className="relative z-10 w-full max-w-md flex flex-col items-center shadow-amber-700 mt-20 shadow-2xl"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-          viewport={{ once: true }}
-          >
-              
-              {/* Foto pasangan */}
-              <img
-                src="/pasangan.webp" // foto pasangan
-                alt="Pasangan"
-                className="w-[500px] h-[700px] object-cover rounded-2xl shadow-2xl"
-              />
-
-          </motion.div>
-        </section>
-
-        {/* === Section 5: Event Details === */}
-        <section
-          className="relative min-h-screen flex items-center justify-center bg-fixed bg-center px-4 py-12"
-          style={{
-            backgroundImage: "url('/Asset_background.webp')",
-            backgroundSize: "contain",
-          }}
-        >
-          <motion.div 
-          className="relative z-10 w-full max-w-md space-y-8"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-          viewport={{ once: true }}
-          >
-            {/* Card 1 - Holy Matrimony */}
-            <motion.div 
-            className="bg-white/90 rounded-2xl shadow-lg p-6 text-center"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-            viewport={{ once: true }}
-            >
-              <h2 className="text-2xl font-serif italic text-gray-800 mb-2">
-                Holy Matrimony
-              </h2>
-              <p className="text-gray-600 mb-1">Sunday, October 20<sup>th</sup> 2024</p>
-              <p className="text-gray-800 font-medium">16.00 – 17.00 WIB</p>
-
-              {/* Icon & Garis */}
-              <div className="flex items-center justify-center my-4">
-                <div className="flex-1 border-t border-gray-400"></div>
-                <span className="mx-3 text-xl">🏛️</span>
-                <div className="flex-1 border-t border-gray-400"></div>
-              </div>
-
-              {/* Venue */}
-              <h3 className="font-semibold text-gray-800">
-                Vihara Hemadhiro Mettavati
-              </h3>
-              <p className="text-sm text-gray-600 mt-1">
-                Jl. Mawar SCB No.11, RT.01/RW.1, Kapuk,<br />
-                Kecamatan Cengkareng, Kota Jakarta Barat
-              </p>
-
-              {/* Google Maps Button */}
-              <a
-                href="https://maps.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-block bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300 transition"
-              >
-                📍 Google Maps
-              </a>
-            </motion.div>
-
-            {/* Card 2 - Reception */}
-            <motion.div className="bg-white/90 rounded-2xl shadow-lg p-6 text-center"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
-            viewport={{ once: true }}
-            >
-              <h2 className="text-2xl font-serif italic text-gray-800 mb-2">
-                Reception
-              </h2>
-              <p className="text-gray-600 mb-1">Sunday, October 20<sup>th</sup> 2024</p>
-              <p className="text-gray-800 font-medium">18.00 – 21.00 WIB</p>
-
-              {/* Icon & Garis */}
-              <div className="flex items-center justify-center my-4">
-                <div className="flex-1 border-t border-gray-400"></div>
-                <span className="mx-3 text-xl">🏛️</span>
-                <div className="flex-1 border-t border-gray-400"></div>
-              </div>
-
-              {/* Venue */}
-              <h3 className="font-semibold text-gray-800">
-                Nafiri Bay Ballroom (NBB)
-              </h3>
-              <p className="text-sm text-gray-600 mt-1">
-                Jl. Pluit Karang Ayu Blk B Utara, Jakarta Utara <br />
-                (Akses melalui parkiran lantai P7, P8)
-              </p>
-
-              {/* Google Maps Button */}
-              <a
-                href="https://maps.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-block bg-gray-200 text-gray-700 px-4 py-2 rounded-full hover:bg-gray-300 transition"
-              >
-                📍 Google Maps
-              </a>
-            </motion.div>
-          </motion.div>
-        </section>
-
-        {/* === Section 6: Trailer Embed Youtube === */}
-        <section
-          className="relative flex flex-col items-center justify-center bg-fixed bg-center px-4 py-12"
-          style={{
-            backgroundImage: "url('/Asset_background.webp')",
-            backgroundSize: "contain",
-          }}
-        >
-          <motion.div 
-          className="relative z-10 w-full max-w-2xl text-center -mt-12"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-          viewport={{ once: true }}
-          >
-            {/* Video Embed */}
-            <div className="w-full pb-[56.25%] h-0 overflow-hidden rounded-2xl shadow-lg mt-10">
-              <iframe
-                className="absolute top-0 left-0 w-full h-full rounded-2xl"
-                src="https://www.youtube.com/embed/CSN72Je7Hlg?rel=0&modestbranding=1"
-                title="Hendry & Wenny Teaser Video"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
-          </motion.div>
-        </section>
-
-        {/* section 7: our gallery dengan lightbox slider*/}
-        <section
-              className="relative flex flex-col items-center justify-center bg-fixed bg-center px-4 pt-6 py-12"
-              style={{
-                backgroundImage: "url('/Asset_background.webp')",
-                backgroundSize: "contain",
-              }}
-            >
-                {/* 🔥 Overlay warna tambahan */}
-                <div
-                  className="absolute inset-0"
-                  style={{ backgroundColor: "#737a80", opacity: 0.6 }}
-                ></div>
+        {/* Bride */}
+        <div className="relative w-64 h-80 mx-auto overflow-hidden rounded-[50%] border border-gray-400 shadow-lg mt-10">
+          <img src="/wanita.jpg" alt="Bride" className="w-full h-full object-cover" />
+        </div>
+        <h3 className="mt-6 text-2xl font-serif italic text-gray-800">[Nama Mempelai Wanita]</h3>
+        <p className="text-gray-700 text-lg">[Nama Lengkap]</p>
+        <p className="text-gray-600 text-sm mt-2">[Nama Ayah] <br /> & [Nama Ibu]</p>
+        <a href="https://instagram.com/" target="_blank" className="mt-4 mb-2 text-pink-600 hover:text-pink-800">
+          <FaInstagram size={28} />
+        </a>
+      </div>
+    </div>
+  </motion.div>
+</section>
 
 
-          <motion.div 
-          className="relative z-10 w-full max-w-4xl text-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-          viewport={{ once: true }}
-          >
-            {/* Judul */}
-            <h2 className="text-3xl md:text-4xl font-serif italic text-white mb-6">
-              Our Gallery
-            </h2>
+{/* === Section 4: Foto Pasangan === */}
+<section className="relative flex items-center justify-center overflow-hidden min-h-screen">
+  <div
+    className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10"
+    style={{ backgroundImage: "url('/Asset_background.webp')" }}
+  ></div>
+  <div className="absolute inset-0 bg-white/30 -z-10"></div>
 
-          {/* Grid Gallery */}
-          <motion.div 
-          className="grid grid-cols-2 gap-4"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-          viewport={{ once: true }}
-          >
-            {/* --- Baris 1 --- */}
-            <div
-              className="col-span-2"
-              onClick={() => { setIndex(0); setOpen(true); }}
-            >
-              <img
-                src={images[0]}
-                alt="Gallery 1"
-                className="w-full h-80 object-cover rounded-xl shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-
-            <div onClick={() => { setIndex(1); setOpen(true); }}>
-              <img
-                src={images[1]}
-                alt="Gallery 2"
-                className="w-full h-60 object-cover rounded-xl shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-
-            <div onClick={() => { setIndex(2); setOpen(true); }}>
-              <img
-                src={images[2]}
-                alt="Gallery 3"
-                className="w-full h-60 object-cover rounded-xl shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-
-            {/* --- Baris 2 --- */}
-            <div
-              className="col-span-2"
-              onClick={() => { setIndex(3); setOpen(true); }}
-            >
-              <img
-                src={images[3]}
-                alt="Gallery 4"
-                className="w-full h-80 object-cover rounded-xl shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-
-            <div onClick={() => { setIndex(4); setOpen(true); }}>
-              <img
-                src={images[4]}
-                alt="Gallery 5"
-                className="w-full h-60 object-cover rounded-xl shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-
-            <div onClick={() => { setIndex(5); setOpen(true); }}>
-              <img
-                src={images[5]}
-                alt="Gallery 6"
-                className="w-full h-60 object-cover rounded-xl shadow-lg cursor-pointer hover:scale-105 transition-transform duration-300"
-              />
-            </div>
-          </motion.div>
-          </motion.div>
-
-          {/* Lightbox */}
-          <Lightbox
-            open={open}
-            index={index}
-            close={() => setOpen(false)}
-            slides={images.map((src) => ({ src }))}
-          />
-        </section>
-
-        {/* === Section 8: Wedding Gift & Live Streaming === */}
-        <section
-          className="relative min-h-screen flex flex-col items-center justify-center bg-fixed bg-center px-4 py-12"
-          style={{
-            backgroundImage: "url('/Asset_background.webp')",
-            backgroundSize: "contain",
-          }}
-        >
-
-           {/* 🔥 Overlay warna tambahan */}
-            <div
-              className="absolute inset-0"
-              style={{ backgroundColor: "#b3bdc4", opacity: 0.6 }}
-            ></div>
+  <motion.div
+    className="relative z-10 w-full max-w-md flex flex-col items-center mt-20 shadow-2xl"
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
+    viewport={{ once: true }}
+  >
+    <img
+      src="/pasangan.webp"
+      alt="Pasangan"
+      className="w-[500px] h-[700px] object-cover rounded-2xl shadow-2xl"
+    />
+  </motion.div>
+</section>
 
 
-            <div className="relative z-10 w-full max-w-md space-y-8">
+{/* === Section 5: Event Details === */}
+<section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-12">
+  <div
+    className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10"
+    style={{ backgroundImage: "url('/Asset_background.webp')" }}
+  ></div>
+  <div className="absolute inset-0 bg-white/40 -z-10"></div>
 
-            {/* Card - Wedding Gift */}
-            <motion.div 
-            className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
-            viewport={{ once: true }}
-            >
-              <h2 className="text-2xl font-serif italic text-gray-800 mb-3">
-                Wedding Gift
-              </h2>
-              <p className="text-gray-600 text-sm mb-4">
-                Your presence is a present in itself. But if you do wish to give us
-                something else, please tap the button down below for further information:
-              </p>
-              <a
-                href="https://your-wedding-gift-link.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center bg-gray-400 text-white px-5 py-2 rounded-full hover:bg-gray-500 transition"
-              >
-                🎁 Wedding Gift
-              </a>
-            </motion.div>
+  <motion.div
+    className="relative z-10 w-full max-w-md space-y-8"
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
+    viewport={{ once: true }}
+  >
+    {/* Card 1 */}
+    <div className="bg-white/90 rounded-2xl shadow-lg p-6 text-center">
+      <h2 className="text-2xl font-serif italic text-gray-800 mb-2">Holy Matrimony</h2>
+      <p className="text-gray-600 mb-1">Sunday, October 20<sup>th</sup> 2024</p>
+      <p className="text-gray-800 font-medium">16.00 – 17.00 WIB</p>
+    </div>
 
-            {/* Card - Live Streaming */}
-            <motion.div 
-            className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, ease: "easeOut", delay: 0.7 }}
-            viewport={{ once: true }}
-            >
-              <h2 className="text-2xl font-serif italic text-gray-800 mb-3">
-                Live Streaming
-              </h2>
-              <p className="text-gray-600 text-sm mb-4">
-                We invite those of you who cannot attend in person to join our special moment
-                through a virtual live streaming by clicking the following:
-              </p>
-              <a
-                href="https://youtube.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center bg-gray-400 text-white px-5 py-2 rounded-full hover:bg-gray-500 transition"
-              >
-                🎥 Live Streaming
-              </a>
-            </motion.div>
-            
-          </div>
-        </section>
+    {/* Card 2 */}
+    <div className="bg-white/90 rounded-2xl shadow-lg p-6 text-center">
+      <h2 className="text-2xl font-serif italic text-gray-800 mb-2">Reception</h2>
+      <p className="text-gray-600 mb-1">Sunday, October 20<sup>th</sup> 2024</p>
+      <p className="text-gray-800 font-medium">18.00 – 21.00 WIB</p>
+    </div>
+  </motion.div>
+</section>
+
+
+{/* === Section 6: Trailer Embed Youtube === */}
+<section className="relative flex flex-col items-center justify-center overflow-hidden min-h-screen px-4 py-12">
+  <div
+    className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10"
+    style={{ backgroundImage: "url('/Asset_background.webp')" }}
+  ></div>
+  <div className="absolute inset-0 bg-black/40 -z-10"></div>
+
+  <motion.div
+    className="relative z-10 w-full max-w-2xl text-center -mt-12"
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
+    viewport={{ once: true }}
+  >
+    <div className="w-full pb-[56.25%] h-0 overflow-hidden rounded-2xl shadow-lg mt-10">
+      <iframe
+        className="absolute top-0 left-0 w-full h-full rounded-2xl"
+        src="https://www.youtube.com/embed/CSN72Je7Hlg?rel=0&modestbranding=1"
+        title="Teaser Video"
+        frameBorder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen
+      ></iframe>
+    </div>
+  </motion.div>
+</section>
+
+
+{/* === Section 7: Our Gallery === */}
+<section className="relative flex flex-col items-center justify-center overflow-hidden min-h-screen px-4 py-12">
+  <div
+    className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10"
+    style={{ backgroundImage: "url('/Asset_background.webp')" }}
+  ></div>
+  <div className="absolute inset-0 bg-gray-700/60 -z-10"></div>
+
+  <motion.div
+    className="relative z-10 w-full max-w-4xl text-center"
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
+    viewport={{ once: true }}
+  >
+    <h2 className="text-3xl md:text-4xl font-serif italic text-white mb-6">Our Gallery</h2>
+    {/* Grid Gallery di sini */}
+  </motion.div>
+</section>
+
+
+{/* === Section 8: Wedding Gift & Live Streaming === */}
+<section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 py-12">
+  <div
+    className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10"
+    style={{ backgroundImage: "url('/Asset_background.webp')" }}
+  ></div>
+  <div className="absolute inset-0 bg-white/40 -z-10"></div>
+
+  <div className="relative z-10 w-full max-w-md space-y-8">
+    <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
+      <h2 className="text-2xl font-serif italic text-gray-800 mb-3">Wedding Gift</h2>
+      <p className="text-gray-600 text-sm mb-4">Your presence is a present in itself...</p>
+      <a href="#" className="inline-flex items-center bg-gray-400 text-white px-5 py-2 rounded-full">🎁 Wedding Gift</a>
+    </div>
+
+    <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
+      <h2 className="text-2xl font-serif italic text-gray-800 mb-3">Live Streaming</h2>
+      <p className="text-gray-600 text-sm mb-4">Join us virtually by clicking below:</p>
+      <a href="#" className="inline-flex items-center bg-gray-400 text-white px-5 py-2 rounded-full">🎥 Live Streaming</a>
+    </div>
+  </div>
+</section>
+
 
         {/* === Section 9: Countdown + RSVP === */}
-        <section
-          className="relative flex flex-col items-center justify-center bg-fixed bg-center px-4 py-12 bg-no-repeat"
-          style={{
-            backgroundImage: "url('/asset_architechture.webp')",
-            backgroundSize: "cover",
-          }}
-        >
-          {/* 🔥 Overlay warna tambahan */}
-          <div
-            className="absolute inset-0"
-            style={{ backgroundColor: "#b3bdc4", opacity: 0.6 }}
-          ></div>
+<section className="relative flex flex-col items-center justify-center overflow-hidden min-h-screen px-4 py-12">
+  {/* BG Fixed */}
+  <div
+    className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10"
+    style={{ backgroundImage: "url('/asset_architechture.webp')" }}
+  ></div>
+  <div className="absolute inset-0 bg-gray-400/60 -z-10"></div>
 
-          <div className="relative z-10 w-full max-w-md text-center">
-            {/* Card Foto dengan Countdown di atas */}
-            <div className="relative rounded-t-2xl overflow-hidden shadow-lg">
-              {/* Foto */}
-              <img
-                src="/rsvp.webp"
-                alt="Save the Date"
-                className="w-full h-[500px] object-cover"
-              />
+  <div className="relative z-10 w-full max-w-md text-center">
+    {/* Card Foto + Countdown */}
+    <div className="relative rounded-t-2xl overflow-hidden shadow-lg">
+      <img src="/rsvp.webp" alt="Save the Date" className="w-full h-[500px] object-cover" />
 
-              {/* Countdown & Button di atas foto */}
-              <div className="absolute top-0 left-0 w-full flex flex-col items-center mt-6">
-                {/* Countdown */}
-                <div className="grid grid-cols-4 gap-2 mb-4">
-                  <div className="bg-gray-700 text-white rounded-lg px-3 py-2">
-                    <h3 className="text-lg font-bold">{timeLeft.days}</h3>
-                    <p className="text-xs">Days</p>
-                  </div>
-                  <div className="bg-gray-700 text-white rounded-lg px-3 py-2">
-                    <h3 className="text-lg font-bold">{timeLeft.hours}</h3>
-                    <p className="text-xs">Hours</p>
-                  </div>
-                  <div className="bg-gray-700 text-white rounded-lg px-3 py-2">
-                    <h3 className="text-lg font-bold">{timeLeft.minutes}</h3>
-                    <p className="text-xs">Minutes</p>
-                  </div>
-                  <div className="bg-gray-700 text-white rounded-lg px-3 py-2">
-                    <h3 className="text-lg font-bold">{timeLeft.seconds}</h3>
-                    <p className="text-xs">Seconds</p>
-                  </div>
-                </div>
-
-                {/* Save The Date Button */}
-                <a
-                  href="https://calendar.google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-600 text-white px-6 py-2 rounded-full shadow hover:bg-gray-700 transition"
-                >
-                  📅 Save The Date
-                </a>
-              </div>
-            </div>
-
-            {/* === RSVP Form di bawah gambar === */}
-            <div className=" bg-white shadow-lg p-6 text-center rounded-b-2xl">
-              <h2 className="text-2xl font-serif italic text-gray-800 mb-3">
-                RSVP FORM
-              </h2>
-              <p className="text-gray-600 text-sm mb-4">
-                Please help us prepare everything better by confirming your attendance at
-                our wedding event with the following RSVP form:
-              </p>
-
-              <form className="space-y-4">
-                <input
-                  type="text"
-                  placeholder="Name"
-                  className="w-full border rounded-lg p-2 text-black"
-                />
-                <input
-                  type="text"
-                  placeholder="Address"
-                  className="w-full border rounded-lg p-2 text-black"
-                />
-                <select className="w-full border rounded-lg p-2 text-black">
-                  <option>Will you attend?</option>
-                  <option>Yes</option>
-                  <option>No</option>
-                </select>
-                <input
-                  type="number"
-                  placeholder="Amount of Guest"
-                  className="w-full border rounded-lg p-2 text-black"
-                />
-                <button
-                  type="submit"
-                  className="bg-gray-600 text-white px-6 py-2 rounded-xs   hover:bg-gray-700 transition w-full"
-                >
-                  Submit
-                </button>
-              </form>
-            </div>
+      {/* Countdown di atas foto */}
+      <div className="absolute top-0 left-0 w-full flex flex-col items-center mt-6">
+        <div className="grid grid-cols-4 gap-2 mb-4">
+          <div className="bg-gray-700 text-white rounded-lg px-3 py-2">
+            <h3 className="text-lg font-bold">{timeLeft.days}</h3>
+            <p className="text-xs">Days</p>
           </div>
-        </section>
-
-      {/* === Section 10: Our Love Story === */}
-      <section
-            className="relative min-h-screen flex items-center justify-center bg-contain bg-center px-4"
-            style={{ backgroundImage: "url('/ASSET-BG.png')" }}
-          >
-            {/* 🔥 Overlay warna tambahan */}
-            <div
-              className="absolute inset-0"
-              style={{ backgroundColor: "#7b8994", opacity: 0.6 }}
-            ></div>
-          {/* 🔥 Overlay abu-abu tipis */}
-          <div
-            className="absolute inset-0"
-            style={{ backgroundColor: "#595b5c", opacity: 0.6 }}
-          ></div>
-
-          <motion.div 
-          className="relative z-10 w-full max-w-md text-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-          viewport={{ once: true }}
-          >
-            {/* Judul */}
-            <h2 className="text-3xl md:text-4xl font-serif italic text-white mb-6 mt-10">
-              Our Love Story
-            </h2>
-
-            {/* Foto pasangan */}
-            <div className="rounded-2xl overflow-hidden shadow-lg mb-8">
-              <img
-                src="/ourstory.webp" // 👉 ganti dengan foto yang kamu upload (misal yang merah dress panjang itu)
-                alt="Our Story"
-                className="w-full h-64 object-cover"
-              />
-            </div>
-
-            {/* Timeline Story */}
-            <div className="space-y-8 text-white">
-              {/* Story 1 */}
-              <div>
-                <h3 className="text-4xl font-serif italic mb-2">First Meeting</h3>
-                <p className="text-sm leading-relaxed">
-                  At the beginning of our acquaintance, we were in the same class when
-                  we were in college. He sent a private chat because he knew that we
-                  were from the same city. From there we got to know each other.
-                </p>
-              </div>
-
-              {/* Story 2 */}
-              <div>
-                <h3 className="text-4xl font-serif italic mb-2">Two Become One</h3>
-                <p className="text-sm leading-relaxed">
-                  After getting closer when we met at the Chancellor&apos;s Cup, we
-                  started communicating and meeting up frequently. From there, our
-                  feelings grew stronger until we realized we were meant for each other.
-                </p>
-              </div>
-
-              {/* Story 3 */}
-              <div>
-                <h3 className="text-4xl font-serif italic mb-2">New Journey</h3>
-                <p className="text-sm leading-relaxed mb-10">
-                  After getting closer when we met at the Chancellor&apos;s Cup, we
-                  started communicating and meeting up frequently. From there, our
-                  feelings grew stronger until we realized we were meant for each other.
-                </p>
-              </div>
-            </div>
-          </motion.div>
-      </section>
-
-      {/* === Section 11: Full Width Photo Only === */}
-      <section className="w-full ">
-        <img
-          src="/afterourstory.webp"  // 👉 ganti sesuai nama file fotomu
-          alt="Couple with Balloon"
-          className="w-full h-auto object-cover"
-        />
-      </section>
-
-      {/* === Section 12: Sharing Memories + QR Check-in === */}
-      <section
-        className="relative min-h-screen flex flex-col items-center justify-center bg-fixed bg-center px-4 py-16 space-y-6"
-        style={{
-          backgroundImage: "url('/Asset_background.webp')", // 👉 ganti sesuai gambar parallax
-          backgroundSize: "contain",
-        }}
-      > 
-        {/* Overlay gelap tipis */}
-        <div className="absolute inset-0 bg-black/30"></div>
-
-        <div className="relative z-10 w-full max-w-md space-y-6">
-          {/* Card Sharing Memories */}
-          <motion.div 
-          className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-          viewport={{ once: true }}
-          >
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Sharing Memories</h2>
-            <p className="text-gray-600 mb-6">
-              Please help us capture this special moment by uploading your photos 
-              during the event so that it becomes a beautiful memories for both couples 
-              by clicking the button below.
-            </p>
-            <a
-              href="#"
-              className="inline-block bg-gray-600 text-white px-6 py-3 rounded-full shadow hover:bg-gray-700 transition"
-            >
-              📸 Sharing Memories
-            </a>
-          </motion.div>
-
-          {/* Card QR Check-in */}
-          <motion.div 
-          className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-          viewport={{ once: true }}
-          >
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">Qr Check in</h2>
-            <p className="text-gray-600 mb-6">
-              Show the QR code for checking in to the location for the officer to scan it 
-              because the data is integrated with the digital guestbook system. 
-              Click the following button to download the QR code.
-            </p>
-            <a
-              href="#"
-              className="inline-block bg-gray-600 text-white px-6 py-3 rounded-full shadow hover:bg-gray-700 transition"
-            >
-              ⬇️ Download QR
-            </a>
-          </motion.div>
+          <div className="bg-gray-700 text-white rounded-lg px-3 py-2">
+            <h3 className="text-lg font-bold">{timeLeft.hours}</h3>
+            <p className="text-xs">Hours</p>
+          </div>
+          <div className="bg-gray-700 text-white rounded-lg px-3 py-2">
+            <h3 className="text-lg font-bold">{timeLeft.minutes}</h3>
+            <p className="text-xs">Minutes</p>
+          </div>
+          <div className="bg-gray-700 text-white rounded-lg px-3 py-2">
+            <h3 className="text-lg font-bold">{timeLeft.seconds}</h3>
+            <p className="text-xs">Seconds</p>
+          </div>
         </div>
-      </section>
 
-      {/* === Section 13: Best Wishes === */}
-      <section
-        className="relative flex flex-col items-center justify-center bg-center px-4 py-16"
-        style={{
-          backgroundImage: "url('/ASSET-BG.png')", // ganti sesuai pattern kamu
-          backgroundSize: "contain",
-        }}
-      >
-
-        {/* 🔥 Overlay warna tambahan */}
-        <div
-            className="absolute inset-0"
-            style={{ backgroundColor: "#7b8994", opacity: 0.6 }}
-        ></div>
-
-
-        {/* Overlay tipis biar tulisan lebih jelas */}
-        <div className="absolute inset-0 bg-black/50"></div>
-
-        <motion.div 
-        className="relative z-10 w-full max-w-lg text-center bg-white/70 backdrop-blur-md p-8 rounded-2xl shadow-lg"
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-        viewport={{ once: true }}
+        <a
+          href="https://calendar.google.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-gray-600 text-white px-6 py-2 rounded-full shadow hover:bg-gray-700 transition"
         >
-          <h2 className="text-3xl mb-4 text-black">Best Wishes</h2>
-          <p className="text-gray-700 mb-8">
-            Leave us your beautiful wishes and most sincere prayers here as we are so
-            excited to embark on this new journey together:
-          </p>
+          📅 Save The Date
+        </a>
+      </div>
+    </div>
 
-          {/* Form */}
-          <form className="space-y-4">
-            {/* Input Name */}
-            <div>
-              <input
-                type="text"
-                placeholder="Name"
-                className="w-full rounded-md border border-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400 text-black"
-              />
-            </div>
+    {/* RSVP Form */}
+    <div className="bg-white shadow-lg p-6 text-center rounded-b-2xl">
+      <h2 className="text-2xl font-serif italic text-gray-800 mb-3">RSVP FORM</h2>
+      <form className="space-y-4">
+        <input type="text" placeholder="Name" className="w-full border rounded-lg p-2 text-black" />
+        <input type="text" placeholder="Address" className="w-full border rounded-lg p-2 text-black" />
+        <select className="w-full border rounded-lg p-2 text-black">
+          <option>Will you attend?</option>
+          <option>Yes</option>
+          <option>No</option>
+        </select>
+        <input type="number" placeholder="Amount of Guest" className="w-full border rounded-lg p-2 text-black" />
+        <button type="submit" className="bg-gray-600 text-white px-6 py-2 hover:bg-gray-700 transition w-full">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
 
-            {/* Input Wishes */}
-            <div>
-              <textarea
-                rows={4}
-                maxLength={500}
-                placeholder="Your Best Wishes"
-                className="w-full rounded-md border border-black px-4 py-2 focus:outline-none focus:ring-2 focus:ring-gray-400 text-black"
-              ></textarea>
-              <div className="text-right text-xs text-gray-500">500</div>
-            </div>
 
-            {/* Button */}
-            <button
-              type="submit"
-              className="bg-gray-800 text-white px-6 py-2 rounded-md hover:bg-gray-900 transition"
-            >
-              Send Wishes
-            </button>
-          </form>
-        </motion.div>
-      </section>
+{/* === Section 10: Our Love Story === */}
+<section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
+  {/* BG Fixed */}
+  <div
+    className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10"
+    style={{ backgroundImage: "url('/ASSET-BG.png')" }}
+  ></div>
+  <div className="absolute inset-0 bg-gray-700/60 -z-10"></div>
+
+  <motion.div
+    className="relative z-10 w-full max-w-md text-center"
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
+    viewport={{ once: true }}
+  >
+    <h2 className="text-3xl md:text-4xl font-serif italic text-white mb-6 mt-10">Our Love Story</h2>
+
+    {/* Foto */}
+    <div className="rounded-2xl overflow-hidden shadow-lg mb-8">
+      <img src="/ourstory.webp" alt="Our Story" className="w-full h-64 object-cover" />
+    </div>
+
+    {/* Timeline */}
+    <div className="space-y-8 text-white">
+      <div>
+        <h3 className="text-4xl font-serif italic mb-2">First Meeting</h3>
+        <p className="text-sm leading-relaxed">We met in college... (ceritanya lanjut di sini).</p>
+      </div>
+      <div>
+        <h3 className="text-4xl font-serif italic mb-2">Two Become One</h3>
+        <p className="text-sm leading-relaxed">Closer after Chancellor's Cup... (lanjut cerita).</p>
+      </div>
+      <div>
+        <h3 className="text-4xl font-serif italic mb-2">New Journey</h3>
+        <p className="text-sm leading-relaxed mb-10">Our feelings grew stronger... (lanjut cerita).</p>
+      </div>
+    </div>
+  </motion.div>
+</section>
+
+
+{/* === Section 11: Full Width Photo Only === */}
+<section className="w-full relative overflow-hidden">
+  <img src="/afterourstory.webp" alt="Couple with Balloon" className="w-full h-auto object-cover" />
+</section>
+
+
+{/* === Section 12: Sharing Memories + QR Check-in === */}
+<section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 py-16 space-y-6">
+  {/* BG Fixed */}
+  <div
+    className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10"
+    style={{ backgroundImage: "url('/Asset_background.webp')" }}
+  ></div>
+  <div className="absolute inset-0 bg-black/30 -z-10"></div>
+
+  <div className="relative z-10 w-full max-w-md space-y-6">
+    <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">Sharing Memories</h2>
+      <p className="text-gray-600 mb-6">Upload your photos during the event...</p>
+      <a href="#" className="inline-block bg-gray-600 text-white px-6 py-3 rounded-full">📸 Sharing Memories</a>
+    </div>
+
+    <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">QR Check in</h2>
+      <p className="text-gray-600 mb-6">Show the QR code to scan at the venue...</p>
+      <a href="#" className="inline-block bg-gray-600 text-white px-6 py-3 rounded-full">⬇️ Download QR</a>
+    </div>
+  </div>
+</section>
+
+
+{/* === Section 13: Best Wishes === */}
+<section className="relative flex flex-col items-center justify-center overflow-hidden min-h-screen px-4 py-16">
+  {/* BG Fixed */}
+  <div
+    className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10"
+    style={{ backgroundImage: "url('/ASSET-BG.png')" }}
+  ></div>
+  <div className="absolute inset-0 bg-black/50 -z-10"></div>
+
+  <motion.div
+    className="relative z-10 w-full max-w-lg text-center bg-white/70 backdrop-blur-md p-8 rounded-2xl shadow-lg"
+    initial={{ opacity: 0, scale: 0.9 }}
+    whileInView={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
+    viewport={{ once: true }}
+  >
+    <h2 className="text-3xl mb-4 text-black">Best Wishes</h2>
+    <p className="text-gray-700 mb-8">Leave us your beautiful wishes here:</p>
+    <form className="space-y-4">
+      <input type="text" placeholder="Name" className="w-full rounded-md border border-black px-4 py-2 text-black" />
+      <textarea rows={4} maxLength={500} placeholder="Your Best Wishes" className="w-full rounded-md border border-black px-4 py-2 text-black"></textarea>
+      <button type="submit" className="bg-gray-800 text-white px-6 py-2 rounded-md hover:bg-gray-900 transition">
+        Send Wishes
+      </button>
+    </form>
+  </motion.div>
+</section>
+
 
       {/* === Section 14: Closing === */}
       <section className="relative w-full"> 
