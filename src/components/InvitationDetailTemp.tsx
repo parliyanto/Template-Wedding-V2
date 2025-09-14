@@ -83,7 +83,12 @@ export default function InvitationDetail() {
               autoPlay
               muted
               playsInline
-              onEnded={() => setShowText(true)}
+              onTimeUpdate={(e) => {
+              const video = e.currentTarget as HTMLVideoElement; // ✅ kasih tau TS
+              if (video.currentTime >= 15 && !showText) {
+                setShowText(true);
+              }
+            }}
             ></video>
 
             <div className="absolute inset-0"></div>
