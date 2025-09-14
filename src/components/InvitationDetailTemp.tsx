@@ -476,7 +476,7 @@ export default function InvitationDetail() {
       </div>
       <div>
         <h3 className="text-4xl font-serif italic mb-2">Two Become One</h3>
-        <p className="text-sm leading-relaxed">Closer after Chancellor's Cup... (lanjut cerita).</p>
+        <p className="text-sm leading-relaxed">Closer after Chancellors Cup... (lanjut cerita).</p>
       </div>
       <div>
         <h3 className="text-4xl font-serif italic mb-2">New Journey</h3>
