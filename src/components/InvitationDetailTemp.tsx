@@ -2,6 +2,7 @@
 
 import { FaInstagram } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabaseClient";
 import { motion } from "framer-motion";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -13,11 +14,22 @@ const playfair = Playfair_Display({
 });
 
 export default function InvitationDetail() {
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
+  const [wishes, setWishes] = useState<any[]>([])
+  const [mounted, setMounted] = useState(false); // ✅ add
   const [showText, setShowText] = useState(false);
-
-  // 🎯 Tanggal acara
-  const weddingDate = new Date("2025-10-20T16:00:00").getTime();
-
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+  const images = [
+    "/gallery1.webp",
+    "/gallery2.webp",
+    "/gallery3.webp",
+    "/gallery4.webp",
+    "/gallery5.webp",
+    "/gallery6.webp",
+  ]
+  
   // State untuk countdown
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
@@ -26,7 +38,35 @@ export default function InvitationDetail() {
     seconds: 0,
   });
 
+ 
+
+    // Fetch wishes saat load
+    useEffect(() => {
+        setMounted(true); // ✅ only render client
+        fetchWishes();
+      }, []);
+
+  const fetchWishes = async () => {
+    const { data } = await supabase
+      .from("best_wishes")
+      .select("*")
+      .order("created_at", { ascending: false });
+    if (data) setWishes(data);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name || !message) return;
+
+    await supabase.from("best_wishes").insert([{ name, message }]);
+    setName("");
+    setMessage("");
+    fetchWishes();
+  };
+
    useEffect(() => {
+      // 🎯 Tanggal acara
+  const weddingDate = new Date("2025-10-20T16:00:00").getTime();
     const interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = weddingDate - now;
@@ -48,28 +88,21 @@ export default function InvitationDetail() {
     return () => clearInterval(interval);
   }, []);
 
-  const images = [
-    "/gallery1.webp",
-    "/gallery2.webp",
-    "/gallery3.webp",
-    "/gallery4.webp",
-    "/gallery5.webp",
-    "/gallery6.webp",
-  ]
+    if (!mounted) return null; // ⛔ hindari SSR render mismatch
 
-  const [open, setOpen] = useState(false);
-  const [index, setIndex] = useState(0);
+
+
 
   return (
-  <div className="grid md:grid-cols-[65%_35%] grid-cols-1 w-full h-screen">
-  {/* === Kiri: gambar fix === */}
-  <div className="h-screen sticky top-0 hidden md:block">
-    <div
-      className="absolute inset-0 bg-cover bg-center"
-      style={{ backgroundImage: "url('/section1.webp')" }}
-    ></div>
-    <div className="absolute inset-0 bg-black/50"></div>
-  </div>
+      <div className="grid md:grid-cols-[65%_35%] grid-cols-1 w-full h-screen">
+      {/* === Kiri: gambar fix === */}
+      <div className="h-screen sticky top-0 hidden md:block">
+        <div
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: "url('/section1.webp')" }}
+        ></div>
+        <div className="absolute inset-0 bg-black/50"></div>
+      </div>
 
 
 
@@ -157,17 +190,13 @@ export default function InvitationDetail() {
                       className="mx-auto w-40 opacity-80"
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <h2 className="text-3xl font-serif text-gray-800">H W</h2>
+                      <h2 className="text-3xl font-serif text-gray-800">A A</h2>
                     </div>
                   </div>
 
                   {/* Quote */}
                   <motion.p className="mt-6 italic text-gray-700 leading-relaxed">
-                    “What greater thing is there for two human souls,
-                    than to feel that they are joined for life to strengthen each other in all labor,
-                    to rest on each other in all sorrow, to minister to each other in all pain,
-                    to be with each other to silent unspeakable memories at the moment,
-                    of the last parting.”
+                    “And of His Signs is that He has created mates for you from your own kind that you may find peace in them and He has set between you love and mercy.”
                   </motion.p>
 
                   {/* Gambar bawah */}
@@ -278,7 +307,7 @@ export default function InvitationDetail() {
 
 
         {/* === Section 5: Event Details === */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden px-4 py-12">
+        <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-12">
           <div
             className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10"
             style={{ backgroundImage: "url('/Asset_background.webp')" }}
@@ -286,27 +315,61 @@ export default function InvitationDetail() {
           <div className="absolute inset-0 bg-white/40 -z-10"></div>
 
           <motion.div
-            className="relative z-10 w-full max-w-md space-y-8"
+            className="relative z-10 w-full max-w-md space-y-6"
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
             viewport={{ once: true }}
           >
-            {/* Card 1 */}
-            <div className="bg-white/90 rounded-2xl shadow-lg p-6 text-center -mt-40">
-              <h2 className="text-2xl font-serif italic text-gray-800 mb-2">Holy Matrimony</h2>
-              <p className="text-gray-600 mb-1">Sunday, October 20<sup>th</sup> 2024</p>
-              <p className="text-gray-800 font-medium">16.00 – 17.00 WIB</p>
-            </div>
-
-            {/* Card 2 */}
+            {/* Card Event */}
             <div className="bg-white/90 rounded-2xl shadow-lg p-6 text-center">
-              <h2 className="text-2xl font-serif italic text-gray-800 mb-2">Reception</h2>
-              <p className="text-gray-600 mb-1">Sunday, October 20<sup>th</sup> 2024</p>
-              <p className="text-gray-800 font-medium">18.00 – 21.00 WIB</p>
+              <h2 className="text-2xl font-serif italic text-gray-800 mb-3">
+                Wedding Ceremony
+              </h2>
+              <p className="text-gray-600 mb-1">Sunday, December 7<sup>th</sup> 2025</p>
+              <p className="text-gray-800 font-medium mb-4">
+                AR-RODA Functional Hall Darussalam
+              </p>
+
+              {/* Google Maps Embed */}
+              <div className="w-full h-48 mb-4 overflow-hidden rounded-md border">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.0535060440734!2d106.95895547316785!3d-6.256682061253435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698d1c62f0a44b%3A0x3d6e710a4fa402a5!2sAR-RODA%20Function%20Hall%20Darussalam!5e0!3m2!1sid!2sid!4v1759079766046!5m2!1sid!2sid"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+
+              {/* Show Location Button */}
+              <a
+                href="https://maps.app.goo.gl/RG6wWQ84VL1Zx4VE9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-gray-500 text-white px-6 py-2 rounded-md hover:bg-gray-700 transition"
+              >
+                Show Location
+              </a>
+
+              {/* Jadwal Detail */}
+              <div className="mt-6 space-y-2 text-gray-700">
+                <p>
+                  <span className="font-semibold">Akad</span> <br />
+                  08:30 – 11:00 WIB
+                </p>
+                <p>
+                  <span className="font-semibold">Reception</span> <br />
+                  11:00 – 13:00 WIB
+                </p>
+              </div>
             </div>
           </motion.div>
         </section>
+
+
 
 
         {/* === Section 6: Trailer Embed Youtube === */}
@@ -405,28 +468,54 @@ export default function InvitationDetail() {
         </section>
 
 
-        {/* === Section 8: Wedding Gift & Live Streaming === */}
-        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 py-12">
+        {/* === Section 8: Wedding Gift === */}
+        {/* === Section Wedding Gift === */}
+<section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 py-12">
+  <div
+    className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10"
+    style={{ backgroundImage: "url('/Asset_background.webp')" }}
+  ></div>
+  <div className="absolute inset-0 bg-white/40 -z-10"></div>
+
+  <div className="relative z-10 w-full max-w-md">
+    <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
+      <h2 className="text-2xl font-serif italic text-gray-800 mb-3">Wedding Gift</h2>
+      <p className="text-gray-600 text-sm mb-6">
+        We are beyond grateful to have your presence but if you'd like to send us a gift, 
+        please transfer to one of these bank accounts:
+      </p>
+
+      {/* 🔥 List rekening */}
+      <div className="space-y-3 text-left">
+        {[
+          { name: "Asri Cikita Putri", bank: "BCA 1234567" },
+          { name: "Arief Rachman Nugraha", bank: "BCA 1234567" },
+        ].map((item, idx) => (
           <div
-            className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10"
-            style={{ backgroundImage: "url('/Asset_background.webp')" }}
-          ></div>
-          <div className="absolute inset-0 bg-white/40 -z-10"></div>
-
-          <div className="relative z-10 w-full max-w-md space-y-8">
-            <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
-              <h2 className="text-2xl font-serif italic text-gray-800 mb-3">Wedding Gift</h2>
-              <p className="text-gray-600 text-sm mb-4">Your presence is a present in itself...</p>
-              <a href="#" className="inline-flex items-center bg-gray-400 text-white px-5 py-2 rounded-full">🎁 Wedding Gift</a>
+            key={idx}
+            className="flex justify-between items-center bg-gray-100 rounded-lg px-4 py-2"
+          >
+            <div>
+              <p className="font-medium text-gray-800">{item.name}</p>
+              <p className="text-sm text-gray-600">{item.bank}</p>
             </div>
-
-            <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
-              <h2 className="text-2xl font-serif italic text-gray-800 mb-3">Live Streaming</h2>
-              <p className="text-gray-600 text-sm mb-4">Join us virtually by clicking below:</p>
-              <a href="#" className="inline-flex items-center bg-gray-400 text-white px-5 py-2 rounded-full">🎥 Live Streaming</a>
-            </div>
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(item.bank);
+                alert(`${item.bank} copied!`);
+              }}
+              className="bg-gray-400 text-white px-3 py-1 rounded-md text-sm hover:bg-gray-600 transition"
+            >
+              Copy
+            </button>
           </div>
-        </section>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+       
 
 
         {/* === Section 9: Countdown + RSVP === */}
@@ -542,60 +631,74 @@ export default function InvitationDetail() {
         <section className="w-full relative overflow-hidden">
           <img src="/afterourstory.webp" alt="Couple with Balloon" className="w-full h-auto object-cover" />
         </section>
-
-
-        {/* === Section 12: Sharing Memories + QR Check-in === */}
-        <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4 py-16 space-y-6">
-          {/* BG Fixed */}
-          <div
-            className="fixed top-0 left-0 w-full h-full bg-cover bg-center -z-10"
-            style={{ backgroundImage: "url('/Asset_background.webp')" }}
-          ></div>
-          <div className="absolute inset-0 -z-10"></div>
-
-          <div className="relative z-10 w-full max-w-md space-y-6">
-            <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">Sharing Memories</h2>
-              <p className="text-gray-600 mb-6">Upload your photos during the event...</p>
-              <a href="#" className="inline-block bg-gray-600 text-white px-6 py-3 rounded-full">📸 Sharing Memories</a>
-            </div>
-
-            <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">QR Check in</h2>
-              <p className="text-gray-600 mb-6">Show the QR code to scan at the venue...</p>
-              <a href="#" className="inline-block bg-gray-600 text-white px-6 py-3 rounded-full">⬇️ Download QR</a>
-            </div>
-          </div>
-        </section>
+       
 
 
         {/* === Section 13: Best Wishes === */}
         <section className="relative flex flex-col items-center justify-center min-h-screen px-4 py-12 bg-[#4f5766] bg-cover bg-center">
-        {/* Overlay abu + pattern */}
-        <div
-          className="absolute inset-0 opacity-40 bg-contain"
-          style={{ backgroundImage: "url('/ASSET-BG.png')" }}
-        ></div>
-          <div className="absolute inset-0 bg-black/50 -z-10"></div>
+      {/* Overlay abu + pattern */}
+      <div
+        className="absolute inset-0 opacity-40 bg-contain"
+        style={{ backgroundImage: "url('/ASSET-BG.png')" }}
+      ></div>
+      <div className="absolute inset-0 bg-black/50 -z-10"></div>
 
-          <motion.div
-            className="relative z-10 w-full max-w-lg text-center bg-white/70 backdrop-blur-md p-8 rounded-2xl shadow-lg"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
-            viewport={{ once: true }}
+      <motion.div
+        className="relative z-10 w-full max-w-lg text-center bg-white/70 backdrop-blur-md p-8 rounded-2xl shadow-lg"
+        initial={{ opacity: 0, scale: 0.9 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.3, ease: "easeOut", delay: 0.3 }}
+        viewport={{ once: true }}
+      >
+        <h2 className="text-3xl mb-4 text-black">Best Wishes</h2>
+        <p className="text-gray-700 mb-8">Leave us your beautiful wishes here:</p>
+
+        {/* Form input */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+          <input
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full rounded-md border border-black px-4 py-2 text-black"
+          />
+          <textarea
+            rows={4}
+            maxLength={500}
+            placeholder="Your Best Wishes"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            className="w-full rounded-md border border-black px-4 py-2 text-black"
+          ></textarea>
+          <button
+            type="submit"
+            className="bg-gray-800 text-white px-6 py-2 rounded-md hover:bg-gray-900 transition"
           >
-            <h2 className="text-3xl mb-4 text-black">Best Wishes</h2>
-            <p className="text-gray-700 mb-8">Leave us your beautiful wishes here:</p>
-            <form className="space-y-4">
-              <input type="text" placeholder="Name" className="w-full rounded-md border border-black px-4 py-2 text-black" />
-              <textarea rows={4} maxLength={500} placeholder="Your Best Wishes" className="w-full rounded-md border border-black px-4 py-2 text-black"></textarea>
-              <button type="submit" className="bg-gray-800 text-white px-6 py-2 rounded-md hover:bg-gray-900 transition">
-                Send Wishes
-              </button>
-            </form>
-          </motion.div>
-        </section>
+            Send Wishes
+          </button>
+        </form>
+      </motion.div>
+
+     
+    {/* Daftar Wishes */}
+      <div className="relative z-10 w-full max-w-lg mt-8 space-y-4">
+        {wishes.map((wish) => (
+          <div
+            key={wish.id}
+            className="bg-white/80 backdrop-blur-md p-4 rounded-lg shadow"
+          >
+            <p className="font-semibold text-gray-900">{wish.name}</p>
+            <p className="text-gray-700">{wish.message}</p>
+            <p className="text-xs text-gray-500">
+              {new Date(wish.created_at).toLocaleString("id-ID", {
+                dateStyle: "short",
+                timeStyle: "short",
+              })}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
 
 
         {/* === Section 14: Closing === */}

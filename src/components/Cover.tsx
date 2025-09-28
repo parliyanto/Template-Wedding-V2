@@ -6,43 +6,55 @@ type CoverProps = {
 
 export default function Cover({ onOpen }: CoverProps) {
   return (
-<section
-  className="
-    absolute inset-0 flex flex-col 
-    justify-center items-center gap-64  /* 🔹 default: mobile tengah & rapet */
-    sm:justify-between sm:gap-0         /* 🔹 desktop balik normal */
-    text-white text-center bg-cover bg-center px-4
-  "
-  style={{ backgroundImage: "url('/cover.webp')" }}
->
-  {/* Overlay gelap */}
-  <div className="absolute inset-0 bg-black/50"></div>
-
-  {/* Bagian atas: Judul */}
-  <div className="relative z-10 mt-12 sm:mt-12">
-    <p className="uppercase tracking-widest text-xs sm:text-sm md:text-base drop-shadow-md italic">
-      The Wedding of
-    </p>
-    <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif drop-shadow-lg italic">
-      Arif & Pasangan
-    </h1>
-  </div>
-
-  {/* Bagian bawah: sapaan + tombol */}
-  <div className="relative z-10 mb-5 sm:mb-5">
-    <p className="text-sm sm:text-base md:text-lg drop-shadow-md mb-2 ">Dear,</p>
-    <p className="text-base sm:text-lg md:text-xl font-medium drop-shadow-md ">
-      Guest Name
-    </p>
-    <button
-      onClick={onOpen}
-      className="mt-6 px-3 py-3 w-full sm:px-10 sm:py-4 bg-gradient-to-r from-gray-800 to-black rounded-full shadow-lg hover:scale-105 transition text-sm sm:text-base cursor-pointer"
+    <section
+      className="
+        absolute inset-0 flex flex-col 
+        justify-center items-center gap-10
+        text-white text-center bg-cover bg-center px-4
+      "
+      style={{ backgroundImage: "url('/BG-match.png')" }}
     >
-      Open Invitation
-    </button>
-  </div>
-</section>
+      {/* Overlay gelap */}
+      <div className="absolute inset-0 bg-black/50"></div>
+
+      {/* Judul */}
+      <div className="relative z-10 mt-8">
+        <h2 className="text-4xl sm:text-5xl md:text-5xl font-serif drop-shadow-lg italic">
+          It’s a Match!
+        </h2>
+        <p className="mt-2 text-base sm:text-lg md:text-lg drop-shadow-md">
+          Arif & Pasangan are getting married!
+        </p>
+      </div>
+
+      {/* Foto pasangan */}
+      <div className="relative z-10 flex gap-6 sm:gap-8 mt-4">
+        <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-white shadow-lg">
+          <img src="/Arief.png" alt="Foto Arif" className="w-full h-full object-cover" />
+        </div>
+        <div className="w-36 h-36 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full overflow-hidden border-4 border-white shadow-lg">
+          <img src="/Asri.png" alt="Foto Pasangan" className="w-full h-full object-cover" />
+        </div>
+      </div>
+
+      {/* Bagian bawah */}
+      <div className="relative z-10 mb-5 sm:mb-8 mt-6">
+        <p className="text-base sm:text-lg md:text-lg drop-shadow-md mb-2 ">
+          Dear,
+        </p>
+        <p className="text-xl sm:text-2xl md:text-2xl font-semibold drop-shadow-md ">
+          Guest Name
+        </p>
+        <button
+          onClick={onOpen}
+          className="mt-6 px-5 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-gray-800 to-black 
+                    rounded-full shadow-lg hover:scale-105 transition text-base sm:text-lg cursor-pointer"
+        >
+          Open Invitation
+        </button>
+      </div>
 
 
+    </section>
   );
 }
