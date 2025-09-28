@@ -8,15 +8,23 @@ import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { Playfair_Display } from "next/font/google";
 
-const playfair = Playfair_Display({
-  subsets: ["latin"],
-  weight: ["400", "700"],
-});
+// const playfair = Playfair_Display({
+//   subsets: ["latin"],
+//   weight: ["400", "700"],
+// });
 
 export default function InvitationDetail() {
   const [name, setName] = useState("");
   const [message, setMessage] = useState("");
-  const [wishes, setWishes] = useState<any[]>([])
+  interface Wish {
+  id: string;
+  name: string;
+  message: string;
+  created_at: string;
+}
+
+const [wishes, setWishes] = useState<Wish[]>([]);
+
   const [mounted, setMounted] = useState(false); // ✅ add
   const [showText, setShowText] = useState(false);
   const [open, setOpen] = useState(false);
