@@ -481,7 +481,7 @@ export default function InvitationDetail() {
     <div className="bg-white/80 backdrop-blur-md rounded-2xl shadow-lg p-6 text-center">
       <h2 className="text-2xl font-serif italic text-gray-800 mb-3">Wedding Gift</h2>
       <p className="text-gray-600 text-sm mb-6">
-        We are beyond grateful to have your presence but if you'd like to send us a gift, 
+        We are beyond grateful to have your presence but if youd like to send us a gift, 
         please transfer to one of these bank accounts:
       </p>
 
